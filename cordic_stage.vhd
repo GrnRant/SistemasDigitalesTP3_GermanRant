@@ -4,15 +4,15 @@ use IEEE.numeric_std.all;
 
 entity cordic_stage is
     generic(NC : natural := 16);
-    port(x_in : in signed(NC-1 downto 0);
-        y_in : in signed(NC-1 downto 0);
-        z_in : in signed(NC-1 downto 0);
-        x_out : out signed(NC-1 downto 0);
-        y_out : out signed(NC-1 downto 0);
-        z_out : out signed(NC-1 downto 0);
-        beta : in signed(NC-1 downto 0);
-        shift : in integer;
-        mode : in std_logic --Modo de operacion (rotación => '1', vector => '0')
+    port(x_in : in signed(NC-1 downto 0);   --Entrada de etapa cordic
+        y_in : in signed(NC-1 downto 0);    --Entrada de etapa cordic
+        z_in : in signed(NC-1 downto 0);    --Entrada de etapa cordic
+        x_out : out signed(NC-1 downto 0);  --Salida de etapa cordic
+        y_out : out signed(NC-1 downto 0);  --Salida de etapa cordic
+        z_out : out signed(NC-1 downto 0);  --Salida de etapa cordic
+        beta : in signed(NC-1 downto 0);    --Beta de la etapa (depende del número de etapa o iteración)
+        shift : in integer;                 --Cantidad de desplazamientos de la etapa (depende del número de etapa o iteración)
+        mode : in std_logic                 --Modo de operacion (rotación => '1', vector => '0')
     );
 end cordic_stage;
 

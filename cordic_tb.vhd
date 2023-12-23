@@ -9,7 +9,7 @@ end entity cordic_tb;
 
 architecture cordic_tb_arq of cordic_tb is
 
-    constant N : natural := 14;
+    constant N : natural := 16;
     constant FILE_PATH  : string := "Datos.txt";
     
     signal clk : std_logic := '0';
@@ -93,9 +93,10 @@ begin
         end if;
     end process;
 
-    DUT: entity work.cordic(cordic_unrolled_arch)
+    --Cambiar arquitectura en función de la que se quiera probar
+    DUT_CORDIC: entity work.cordic(cordic_rolled_arch)
     generic map(
-        N => N 
+        N => N
     )
     port map(
         clk => clk,

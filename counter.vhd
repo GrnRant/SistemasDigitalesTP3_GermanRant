@@ -4,10 +4,10 @@ use IEEE.numeric_std.all;
 
 entity counter is 
     generic(MAX : integer := 15);
-    port(clk : in std_logic;
-        ena : in std_logic;
-        rst : in std_logic;
-        count : out natural
+    port(clk : in std_logic;    --Clock del contador
+        ena : in std_logic;     --Habilitador
+        rst : in std_logic;     --Reset
+        count : out natural     --Salida del contador
     );
 end counter;
 
@@ -33,6 +33,6 @@ begin
                 end if;
             end if;
     end process;
-
+    --Salida
     count <= 0 when rst = '1' else aux;
 end counter_arch;

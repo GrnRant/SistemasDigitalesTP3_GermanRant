@@ -4,26 +4,26 @@ use IEEE.numeric_std.all;
 
 entity precordic is
     generic(NP : natural := 16);
-    port(x_in : in signed(NP-1 downto 0);
-         y_in : in signed(NP-1 downto 0);
-         z_in : in signed(NP-1 downto 0);
-         x_out : out signed(NP-1 downto 0);
-         y_out : out signed(NP-1 downto 0);
-         z_out : out signed(NP-1 downto 0);
-         mode : in std_logic
+    port(x_in : in signed(NP-1 downto 0);   --Entrada al precordic
+         y_in : in signed(NP-1 downto 0);   --Entrada al precordic
+         z_in : in signed(NP-1 downto 0);   --Entrada al precordic
+         x_out : out signed(NP-1 downto 0); --Salida del precordic
+         y_out : out signed(NP-1 downto 0); --Entrada al precordic
+         z_out : out signed(NP-1 downto 0); --Entrada al precordic
+         mode : in std_logic                --Modo de operacion (rotación => '1', vector => '0')
     );
 end precordic;
 
 architecture precordic_arch of precordic is
-    signal x_in_2c : signed(NP-1 downto 0);
-    signal y_in_2c : signed(NP-1 downto 0);
-    signal z_in_inv : signed(NP-1 downto 0);
-    signal x_rot : signed(NP-1 downto 0);
-    signal y_rot : signed(NP-1 downto 0);
-    signal z_rot : signed(NP-1 downto 0);
-    signal x_vec : signed(NP-1 downto 0);
-    signal y_vec : signed(NP-1 downto 0);
-    signal z_vec : signed(NP-1 downto 0);
+    signal x_in_2c : signed(NP-1 downto 0); --Variable auxiliar
+    signal y_in_2c : signed(NP-1 downto 0); --Variable auxiliar
+    signal z_in_inv : signed(NP-1 downto 0);--Variable auxiliar
+    signal x_rot : signed(NP-1 downto 0);   --Salida en modo rotación
+    signal y_rot : signed(NP-1 downto 0);   --Salida en modo rotación
+    signal z_rot : signed(NP-1 downto 0);   --Salida en modo rotación
+    signal x_vec : signed(NP-1 downto 0);   --Salida en modo vector
+    signal y_vec : signed(NP-1 downto 0);   --Salida en modo vector
+    signal z_vec : signed(NP-1 downto 0);   --Salida en modo vector
 
     begin
         x_in_2c <= not(x_in) + 1; --Complemento a 2

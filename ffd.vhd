@@ -5,10 +5,10 @@ use IEEE.numeric_std.all;
 entity ffd is
     generic(NR: natural := 32);
     port(
-        di : in signed(NR-1 downto 0);
-        qo : out signed(NR-1 downto 0);
-        clk : in std_logic;
-        rst : in std_logic
+        di : in signed(NR-1 downto 0);  --Entrada del flip-flop D
+        qo : out signed(NR-1 downto 0); --Salida
+        clk : in std_logic;             --Clock
+        rst : in std_logic              --Reset
     );
 end ffd;
 
