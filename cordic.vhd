@@ -11,8 +11,7 @@ entity cordic is
         xr : out signed(N+1 downto 0);
         yr : out signed(N+1 downto 0);
         zr : out signed(N+1 downto 0);
-        rst : in std_logic;
-        ack : out std_logic;
+        start : in std_logic;
         clk : in std_logic;
         mode : in std_logic
     );
@@ -32,6 +31,8 @@ architecture cordic_rolled_arch of cordic is
     constant betas: int_array(ITERATIONS-1 downto 0) := gen_atan_table(N, ITERATIONS);
     signal beta : signed(N+1 downto 0);
     signal count_en : std_logic;
+
+    -- signal rst : std_logic;
     
 begin
 
@@ -41,7 +42,7 @@ begin
      port map(
          clk => clk,
          ena => count_en,
-         rst => rst,
+         rst => start,
          count => i
      );
      --ETAPA CORDIC
@@ -60,21 +61,21 @@ begin
     --REGISTROS A LA SALIDA
     REG_X: entity work.ffd
     generic map(NR => N+2)
-    port map(rst => rst,
+    port map(rst => start,
              clk => clk,
              di => x_next,
              qo => x_act
     );
     REG_Y: entity work.ffd
     generic map(NR => N+2)
-    port map(rst => rst,
+    port map(rst => start,
              clk => clk,
              di => y_next,
              qo => y_act
     );
     REG_Z: entity work.ffd
     generic map(NR => N+2)
-    port map(rst => rst,
+    port map(rst => start,
              clk => clk,
              di => z_next,
              qo => z_act
@@ -82,17 +83,15 @@ begin
 
 --Asignación de valor de beta
 beta <= to_signed(betas(i), N+2) when count_en = '1' else (others => '0');
---ACK
-ack <= not count_en;
 
 --Proceso principal
-P_MAIN: process(i, rst)
+P_MAIN: process(clk, start, i)
 begin
     --Detección de inicio
-    if falling_edge(rst) then
+    if falling_edge(start) then
         count_en <= '1';
     end if;
-    if rst = '1' then
+    if i = 0 then
         x_in <= x0;
         y_in <= y0;
         z_in <= z0;
@@ -182,7 +181,7 @@ begin
 
         REG_X_INST: ffd
         generic map(NR => N+2)
-        port map(rst => rst,
+        port map(rst => start,
                  clk => clk,
                  di => x_o(i),
                  qo => x_i(i+1)
@@ -190,7 +189,7 @@ begin
 
         REG_Y_INST: ffd
         generic map(NR => N+2)
-        port map(rst => rst,
+        port map(rst => start,
                  clk => clk,
                  di => y_o(i),
                  qo => y_i(i+1)
@@ -198,7 +197,7 @@ begin
 
         REG_Z_INST: ffd
         generic map(NR => N+2)
-        port map(rst => rst,
+        port map(rst => start,
                  clk => clk,
                  di => z_o(i),
                  qo => z_i(i+1)
@@ -207,9 +206,9 @@ begin
     end generate;
 
     --Proceso que va despalazando el modo a través de las estapas
-    P_MODE_REG: process(rst, clk)
+    P_MODE_REG: process(start, clk)
         begin
-        if rst = '1' then
+        if start = '1' then
             mode_vec(ITERATIONS downto 1) <= (others => '0');
         end if;
         if rising_edge(clk) then

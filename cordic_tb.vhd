@@ -94,13 +94,13 @@ begin
         end if;
     end process;
 
-    DUT: entity work.cordic(cordic_unrolled_arch)
+    DUT: entity work.cordic(cordic_rolled_arch)
     generic map(
         N => N 
     )
     port map(
         clk => clk,
-        rst => rst,
+        start => rst,
         mode => rot0_vec1,
         x0 => x_in,
         y0 => y_in,
