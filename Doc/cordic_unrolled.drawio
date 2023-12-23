@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-12-23T22:52:16.903Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.11 Chrome/114.0.5735.289 Electron/25.9.8 Safari/537.36" etag="dE_mQgThgjd887wHej7U" version="22.1.11" type="device">
+<mxfile host="Electron" modified="2023-12-23T23:03:32.558Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.11 Chrome/114.0.5735.289 Electron/25.9.8 Safari/537.36" etag="7TyWvlaY7l1bCS35C1hG" version="22.1.11" type="device">
   <diagram name="Página-1" id="2hGsJtzXLK10R9dMyT22">
-    <mxGraphModel dx="2040" dy="992" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="486" dy="236" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -333,7 +333,7 @@
         <mxCell id="RBlF5-BPAXgfIc-jL91Y-115" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.d_type_rs_flip-flop;rotation=90;" vertex="1" parent="1">
           <mxGeometry x="555" y="260" width="122.5" height="150" as="geometry" />
         </mxCell>
-        <mxCell id="RBlF5-BPAXgfIc-jL91Y-116" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;x_i(i-1)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="RBlF5-BPAXgfIc-jL91Y-116" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;y_i(i-1)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="617.5" y="250" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="RBlF5-BPAXgfIc-jL91Y-117" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;clk&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
