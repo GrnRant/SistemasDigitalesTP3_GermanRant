@@ -9,7 +9,7 @@ end entity cordic_tb;
 
 architecture cordic_tb_arq of cordic_tb is
 
-    constant N : natural := 16;
+    constant N : natural := 14;
     constant FILE_PATH  : string := "Datos.txt";
     
     signal clk : std_logic := '0';
@@ -62,7 +62,7 @@ begin
             
             -- Opero con el angulo a rotar.
             ANG_RAD := (real(z_file)*MATH_PI)/real(180); -- Lo paso a radianes
-            ANG_Z := integer( round( (ANG_RAD/arctan(real(1))) * real(2**(N-3)) ) ); -- Lo escalo
+            ANG_Z := integer( round( (ANG_RAD/arctan(real(1))) * real(2**(N-1)) ) ); -- Lo escalo
             
             -- Se carga el valor correspondiente del angulo a rotar
             z_in <= to_signed(ANG_Z,N+2);
@@ -83,7 +83,6 @@ begin
     end process Test_Sequence;
 
     P_STAGES_COUNT: process(clk)
-    
     begin
         if rising_edge(clk) then
             if count >= N+2 then
@@ -94,7 +93,7 @@ begin
         end if;
     end process;
 
-    DUT: entity work.cordic(cordic_rolled_arch)
+    DUT: entity work.cordic(cordic_unrolled_arch)
     generic map(
         N => N 
     )

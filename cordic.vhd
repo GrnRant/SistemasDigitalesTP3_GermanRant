@@ -19,6 +19,9 @@ end cordic;
 
 architecture cordic_rolled_arch of cordic is
     signal i : natural;
+    signal x_pre : signed(N+1 downto 0);
+    signal y_pre : signed(N+1 downto 0);
+    signal z_pre : signed(N+1 downto 0);
     signal x_in : signed(N+1 downto 0);
     signal y_in : signed(N+1 downto 0);
     signal z_in : signed(N+1 downto 0);
@@ -28,13 +31,22 @@ architecture cordic_rolled_arch of cordic is
     signal x_next : signed(N+1 downto 0);
     signal y_next : signed(N+1 downto 0);
     signal z_next : signed(N+1 downto 0);
-    constant betas: int_array(ITERATIONS-1 downto 0) := gen_atan_table(N, ITERATIONS);
+    constant betas: int_array(ITERATIONS-1 downto 0) := gen_atan_table(N+2, ITERATIONS);
     signal beta : signed(N+1 downto 0);
     signal count_en : std_logic;
-
-    -- signal rst : std_logic;
     
 begin
+    --PRECORDIC
+    PRECORDIC: entity work.precordic
+    generic map(NP => N+2)
+    port map(x_in => x0,
+         y_in => y0,
+         z_in => z0,
+         x_out => x_pre,
+         y_out => y_pre,
+         z_out => z_pre,
+         mode => mode
+    );
 
      --CONTADOR
      COUNTER: entity work.counter
@@ -92,9 +104,9 @@ begin
         count_en <= '1';
     end if;
     if i = 0 then
-        x_in <= x0;
-        y_in <= y0;
-        z_in <= z0;
+        x_in <= x_pre;
+        y_in <= y_pre;
+        z_in <= z_pre;
     else
         x_in <= x_act;
         y_in <= y_act;
@@ -115,6 +127,9 @@ end cordic_rolled_arch;
 architecture cordic_unrolled_arch of cordic is
     type array_of_signed is array(natural range <>) of signed(N+1 downto 0);
 
+    signal x_pre : signed(N+1 downto 0);
+    signal y_pre : signed(N+1 downto 0);
+    signal z_pre : signed(N+1 downto 0);
     signal x_i: array_of_signed(ITERATIONS downto 0);
     signal y_i: array_of_signed(ITERATIONS downto 0);
     signal z_i: array_of_signed(ITERATIONS downto 0);
@@ -122,7 +137,7 @@ architecture cordic_unrolled_arch of cordic is
     signal y_o: array_of_signed(ITERATIONS downto 0);
     signal z_o: array_of_signed(ITERATIONS downto 0);
 
-    constant betas: int_array(ITERATIONS-1 downto 0) := gen_atan_table(N, ITERATIONS);
+    constant betas: int_array(ITERATIONS-1 downto 0) := gen_atan_table(N+2, ITERATIONS);
 
     signal mode_vec : std_logic_vector(ITERATIONS downto 0);
 
@@ -155,15 +170,27 @@ architecture cordic_unrolled_arch of cordic is
 begin
     --Asignaciones
     --Señales de entrada
-    x_i(0) <= x0;
-    y_i(0) <= y0;
-    z_i(0) <= z0;
+    x_i(0) <= x_pre;
+    y_i(0) <= y_pre;
+    z_i(0) <= z_pre;
     --Señales de salida
     xr <= x_i(ITERATIONS);
     yr <= y_i(ITERATIONS);
     zr <= z_i(ITERATIONS);
     --Modo de primera etapa
     mode_vec(0) <= mode;
+
+    --PRECORDIC
+    PRECORDIC: entity work.precordic
+    generic map(NP => N+2)
+    port map(x_in => x0,
+         y_in => y0,
+         z_in => z0,
+         x_out => x_pre,
+         y_out => y_pre,
+         z_out => z_pre,
+         mode => mode
+    );
 
     COMPONENTS: for i in 0 to ITERATIONS-1 generate
         CORDIC_STAGE_INST: cordic_stage
