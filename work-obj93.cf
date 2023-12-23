@@ -1,0 +1,20 @@
+v 4
+file . "cordic_tb.vhd" "821919ca924c91b1b9ec132864adb37e363d8e4c" "20231223142056.336":
+  entity cordic_tb at 1( 0) + 0 on 193;
+  architecture cordic_tb_arq of cordic_tb at 10( 167) + 0 on 194;
+file . "cordic_stage.vhd" "e56090396f0cf74ebb95c960f0158b596d64b96a" "20231223013952.565":
+  entity cordic_stage at 1( 0) + 0 on 76;
+  architecture cordic_stage_arch of cordic_stage at 19( 574) + 0 on 77;
+file . "counter.vhd" "cd7710cf275e2009a6ef78b78af9efebd79b1eaa" "20231223014337.929":
+  entity counter at 1( 0) + 0 on 126;
+  architecture counter_arch of counter at 14( 270) + 0 on 127;
+file . "utilities.vhd" "de6006fbe0aa27f972b7bdafa9d5f865d60d21ac" "20231223013400.956":
+  package utils at 1( 0) + 0 on 38 body;
+  package body utils at 14( 352) + 0 on 39;
+file . "ffd.vhd" "942a9d1797f7cfa3f824e91f407a83953fcc1507" "20231223012904.926":
+  entity ffd at 1( 0) + 0 on 15;
+  architecture ffd_arch of ffd at 15( 291) + 0 on 16;
+file . "cordic.vhd" "067b00ebaa7d0027c347c3cef302e25122244833" "20231223142026.310":
+  entity cordic at 1( 0) + 0 on 190;
+  architecture cordic_rolled_arch of cordic at 21( 573) + 0 on 191;
+  architecture cordic_unrolled_arch of cordic at 116( 2958) + 0 on 192;
