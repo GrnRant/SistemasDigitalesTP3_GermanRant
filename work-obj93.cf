@@ -1,23 +1,23 @@
 v 4
-file . "cordic_tb.vhd" "d31a501435ad27034aae8e11da173983d96c818b" "20231223230013.479":
-  entity cordic_tb at 1( 0) + 0 on 380;
-  architecture cordic_tb_arq of cordic_tb at 10( 167) + 0 on 381;
-file . "cordic_stage.vhd" "7454aa17e830f1d0c6121563024125e450edf471" "20231223230013.279":
-  entity cordic_stage at 1( 0) + 0 on 373;
-  architecture cordic_stage_arch of cordic_stage at 19( 922) + 0 on 374;
-file . "counter.vhd" "94c50a9a239747f3a1a85142b073a2de94c7cf21" "20231223230013.254":
-  entity counter at 1( 0) + 0 on 371;
-  architecture counter_arch of counter at 14( 350) + 0 on 372;
-file . "utilities.vhd" "f9ea39b25c1f65089a2bb2dbfdaabcab8363811d" "20231223230013.167":
-  package utils at 2( 58) + 0 on 367 body;
-  package body utils at 18( 696) + 0 on 368;
-file . "ffd.vhd" "3599a42d2e5aefc9689c57b9cb20800ee14a770d" "20231223230013.209":
-  entity ffd at 1( 0) + 0 on 369;
-  architecture ffd_arch of ffd at 15( 368) + 0 on 370;
-file . "cordic.vhd" "394109f1ff378a0c43b9e1900b5ebcd2d57b1fe8" "20231223230013.394":
-  entity cordic at 6( 470) + 0 on 377;
-  architecture cordic_rolled_arch of cordic at 28( 1698) + 0 on 378;
-  architecture cordic_unrolled_arch of cordic at 136( 4952) + 0 on 379;
-file . "precordic.vhd" "8d3b6036882877c610d0e79688e7c71242e8018b" "20231223230013.311":
-  entity precordic at 1( 0) + 0 on 375;
-  architecture precordic_arch of precordic at 17( 662) + 0 on 376;
+file . "cordic_tb.vhd" "f0f972dfd99b52da1a47c90ddd50523296554bdc" "20231224121120.639":
+  entity cordic_tb at 1( 0) + 0 on 410;
+  architecture cordic_tb_arq of cordic_tb at 10( 167) + 0 on 411;
+file . "cordic_stage.vhd" "7454aa17e830f1d0c6121563024125e450edf471" "20231224121120.493":
+  entity cordic_stage at 1( 0) + 0 on 403;
+  architecture cordic_stage_arch of cordic_stage at 19( 922) + 0 on 404;
+file . "counter.vhd" "94c50a9a239747f3a1a85142b073a2de94c7cf21" "20231224121120.446":
+  entity counter at 1( 0) + 0 on 401;
+  architecture counter_arch of counter at 14( 350) + 0 on 402;
+file . "utilities.vhd" "f9ea39b25c1f65089a2bb2dbfdaabcab8363811d" "20231224121120.366":
+  package utils at 2( 58) + 0 on 397 body;
+  package body utils at 18( 696) + 0 on 398;
+file . "ffd.vhd" "3599a42d2e5aefc9689c57b9cb20800ee14a770d" "20231224121120.412":
+  entity ffd at 1( 0) + 0 on 399;
+  architecture ffd_arch of ffd at 15( 368) + 0 on 400;
+file . "cordic.vhd" "394109f1ff378a0c43b9e1900b5ebcd2d57b1fe8" "20231224121120.592":
+  entity cordic at 6( 470) + 0 on 407;
+  architecture cordic_rolled_arch of cordic at 28( 1698) + 0 on 408;
+  architecture cordic_unrolled_arch of cordic at 136( 4952) + 0 on 409;
+file . "precordic.vhd" "8d3b6036882877c610d0e79688e7c71242e8018b" "20231224121120.541":
+  entity precordic at 1( 0) + 0 on 405;
+  architecture precordic_arch of precordic at 17( 662) + 0 on 406;
