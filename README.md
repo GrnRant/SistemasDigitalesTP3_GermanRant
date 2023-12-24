@@ -14,14 +14,22 @@ En la siguiente figura se muestra una etapa del cordic desenrrollado. Tener en c
 
 ## Simulaciones
 
-# Simulaciones arquitectura enrollada
+### Simulaciones arquitectura enrollada
+
+#### Simluación componente solo en x y ángulo a rotar 45°.
 
 ![Simluación componente solo en x y ángulo a rotar 45°.](Doc/sim_rolled_45°.png)
 
+#### Simluación componente solo en x y ángulo a rotar 135°.
+
 ![Simluación componente solo en x y ángulo a rotar 135°.](Doc/sim_rolled_135°.png)
 
-# Simulaciones arquitectura desenrollada
+### Simulaciones arquitectura desenrollada
+
+#### Simluación componente solo en x y ángulo a rotar 45°.
 
 ![Simluación componente solo en x y ángulo a rotar 45°.](Doc/sim_unrolled_45°.png)
+
+#### Simluación componente solo en x y ángulo a rotar 135°.
 
 ![Simluación componente solo en x y ángulo a rotar 135°.](Doc/sim_unrolled_135°.png)
