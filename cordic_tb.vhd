@@ -94,7 +94,7 @@ begin
     end process;
 
     --Cambiar arquitectura en función de la que se quiera probar
-    DUT_CORDIC: entity work.cordic(cordic_unrolled_arch)
+    DUT_CORDIC: entity work.cordic(cordic_rolled_arch)
     generic map(
         N => N
     )
