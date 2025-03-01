@@ -49,7 +49,8 @@ begin
     --PRECORDIC
     PRECORDIC: entity work.precordic
     generic map(NP => N)
-    port map(x_in => x0,
+    port map(
+         x_in => x0,
          y_in => y0,
          z_in => z0,
          x_out => x_pre,
@@ -110,7 +111,7 @@ begin
 beta <= to_signed(betas(i), N) when count_en = '1' else (others => '0');
 
 --PROCESO PRINCIPAL DE INICIO Y TERMINADO
-P_MAIN: process(clk, i)
+P_MAIN: process(clk)
 variable pre_start: std_logic := '1';
 begin
     if rising_edge(clk) then
@@ -121,24 +122,19 @@ begin
             yr <= (others => '0');
             zr <= (others => '0');
         end if;
+        if i = ITERATIONS-1 then --Si final de las iteraciones
+            count_en <= '0';
+            xr <= to_signed(to_integer(x_act)*10**GAIN_DECIMALS/gain_scaled, N);
+            yr <= to_signed(to_integer(y_act)*10**GAIN_DECIMALS/gain_scaled, N);
+            zr <= z_act;
+        end if;
         pre_start := start;
     end if;
-    if i = 0 then
-        x_in <= x_pre;
-        y_in <= y_pre;
-        z_in <= z_pre;
-    else
-        x_in <= x_act;
-        y_in <= y_act;
-        z_in <= z_act;
-    end if;
-    if i = ITERATIONS-1 then
-        count_en <= '0';
-        xr <= to_signed(to_integer(x_act)*10**GAIN_DECIMALS/gain_scaled, N);
-        yr <= to_signed(to_integer(y_act)*10**GAIN_DECIMALS/gain_scaled, N);
-        zr <= z_act;
-    end if;
 end process;
+
+x_in <= x_pre when i = 0 else x_act;
+y_in <= y_pre when i = 0 else y_act;
+z_in <= z_pre when i = 0 else z_act;
 
 busy <= count_en;
 

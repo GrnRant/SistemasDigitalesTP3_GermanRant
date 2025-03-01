@@ -18,6 +18,7 @@ architecture cordic_tb_arq of cordic_tb is
     signal rot0_vec1 : std_logic := '0';
     signal x_in,y_in,z_in : signed(N-1 downto 0);
     signal x_out,y_out,z_out : signed(N-1 downto 0);
+    signal cordic_busy : std_logic;
 
     signal count : integer := 0;
 
@@ -69,8 +70,8 @@ begin
             rst <= '1';
             wait until rising_edge(clk);
             rst <= '0';
-            wait until count = N;
             wait until rising_edge(clk);
+            wait until cordic_busy = '0';
         end loop;
     
         file_close(datos); -- Se cierra el archivo
@@ -106,8 +107,8 @@ begin
         z0 => z_in,
         xr => x_out,
         yr => y_out,
-        zr => z_out
-        
+        zr => z_out,
+        busy => cordic_busy        
     );
 
 end architecture cordic_tb_arq;
